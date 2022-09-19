@@ -129,15 +129,23 @@ select option {
 	background-color: hsl(209, 23%, 22%);
 	color: white;
 }
+#dark .back-button:hover{
+	background-color: hsl(206, 26%, 19%);
+	color: white;
+}
 #light .back-button {
 	background-color: hsl(0, 0%, 100%);
+	color: hsl(200, 15%, 8%);
+}
+#light .back-button:hover {
+	background-color: hsl(0, 0%, 89%);;
 	color: hsl(200, 15%, 8%);
 }
 .back-button {
 	
 	border: none;
-	
-	padding: 5px 15px;
+	cursor: pointer;
+	padding: 10px 20px;
 }
 #dark span.border{
 	background-color: hsl(209, 23%, 22%);
@@ -145,11 +153,17 @@ select option {
 #light span.border{
 	background-color: hsl(0, 0%, 100%);
 }
+#light span.border:hover{
+	background-color: hsl(0, 0%, 89%);
+}
+#dark span.border:hover{
+	background-color:  hsl(206, 26%, 19%);
+}
 span.border {
 	display: inline-block;
 	margin: 5px;
 	padding: 5px 15px;
-	
+	cursor: pointer;
 }
 .country-container img {
 	height: 100%;

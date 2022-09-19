@@ -1,18 +1,26 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
-import { getSelectedCountry } from "../state/CountrySlice";
+import { getAllCountry, getSelectedCountry, setSelectedCountry } from "../state/CountrySlice";
 
 export default function CountryPage() {
 	const selectedCountry = useSelector(getSelectedCountry);
+	const allCountry = useSelector(getAllCountry);
 	console.log(selectedCountry);
-  const navigate=useNavigate();
-  const onBackClick=()=>{
-    navigate("/");
-  }
+	const dispatch= useDispatch();
+	const navigate = useNavigate();
+	const onBackClick = () => {
+		navigate("/");
+	};
+	const selectCountry=(country_cca3)=>{
+		const country=allCountry.find(country=>country.cca3===country_cca3);
+		dispatch(setSelectedCountry(country))
+	}
 	return (
 		<div className="container">
-    <button className="back-button" onClick={onBackClick}><i className="fa-solid fa-arrow-left"></i>  Back</button>
+			<button className="back-button" onClick={onBackClick}>
+				<i className="fa-solid fa-arrow-left"></i> Back
+			</button>
 			<div className="country-container">
 				<img src={selectedCountry.flags.png} alt=""></img>
 				<div className="country-datas">
@@ -80,11 +88,16 @@ export default function CountryPage() {
 					<div>
 						<span>
 							<strong>Border countries: </strong>
-							{selectedCountry.borders? selectedCountry.borders.map((border, index) => {
-								
-									return <span key={border} className="border">{border}</span>
-								
-							}):""}
+							{selectedCountry.borders
+								? selectedCountry.borders.map((border, index) => {
+										return (
+											<span onClick={() =>selectCountry(border)} key={border} className="border">
+												{allCountry.find(country=>border===country.cca3).name.common}
+												
+											</span>
+										);
+								  })
+								: ""}
 						</span>
 					</div>
 				</div>
