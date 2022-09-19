@@ -11,15 +11,10 @@ const countryApiSlice = createApi({
     getCountries: build.query({
       query: (body) => ({url:'all'})
     }),
-    getCountriesByRegion: build.query({
-      query: (body) => ({url:`region/${body}`})
-    }),
-    getCountriesByName: build.query({
-      query: (body) => ({url:`name/${body}`})
-    })
+    
   }),
 });
 
-export const {useLazyGetCountriesQuery,useLazyGetCountriesByRegionQuery,useLazyGetCountriesByNameQuery} = countryApiSlice ;
+export const {useLazyGetCountriesQuery} = countryApiSlice ;
 
 export default countryApiSlice;

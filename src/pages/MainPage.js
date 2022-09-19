@@ -16,8 +16,7 @@ import {
 
 export default function MainPage() {
 	const [getApiCountries] = useLazyGetCountriesQuery();
-	const [getCountriesByRegion] = useLazyGetCountriesByRegionQuery();
-	const [getCountriesByName] = useLazyGetCountriesByNameQuery();
+	
 	const dispatch = useDispatch();
 	const countries = useSelector(getCountries);
 	const allCountry = useSelector(getAllCountry);
